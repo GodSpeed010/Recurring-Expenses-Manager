@@ -13,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -57,6 +55,9 @@ fun Content() {
         RecurringBillModel("Spotify", "$7.99", "Monthly", "$42.99"),
         RecurringBillModel("Amazon Prime", "$7.99", "Monthly", "$64.99"),
         RecurringBillModel("Apple Music", "$7.99", "Monthly", "$7.99"),
+        RecurringBillModel("Youtube Premium", "$11.99", "Monthly", "$23.98"),
+        RecurringBillModel("Disney+", "$1.99", "Monthly", "$1.99"),
+        RecurringBillModel("Hulu", "$6.99", "Monthly", "$12.98"),
     )
 
     Column(
