@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -51,13 +52,17 @@ fun App() {
 @Composable
 fun Content() {
     val recurringBills = listOf(
-        RecurringBill("Netflix", "$7.99", "Monthly", "$482.99"),
-        RecurringBill("Dropbox", "$7.99", "Monthly", "$482.99"),
-        RecurringBill("Dropbox", "$7.99", "Monthly", "$482.99"),
+        RecurringBillModel("Netflix", "$7.99", "Monthly", "$482.99"),
+        RecurringBillModel("Dropbox", "$7.99", "Monthly", "$643.99"),
+        RecurringBillModel("Spotify", "$7.99", "Monthly", "$42.99"),
+        RecurringBillModel("Amazon Prime", "$7.99", "Monthly", "$64.99"),
+        RecurringBillModel("Apple Music", "$7.99", "Monthly", "$7.99"),
     )
 
     Column(
-        Modifier.padding(8.dp)
+        Modifier
+            .fillMaxSize()
+            .padding(8.dp)
     ) {
         //Title section
         Card(
@@ -85,35 +90,46 @@ fun Content() {
 
         Spacer(Modifier.height(16.dp))
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(6.dp))
-                .shadow(2.dp)
+        Surface(
+            elevation = 2.dp,
+            shape = RoundedCornerShape(8.dp)
         ) {
-            itemsIndexed(recurringBills) { index, bill ->
-                RecurringBill(bill)
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                itemsIndexed(recurringBills) { index, bill ->
+                    RecurringBill(bill)
 
-                if (index < recurringBills.lastIndex) {
-                    Divider(color = Color.Gray, modifier = Modifier.alpha(0.4f))
+                    if (index < recurringBills.lastIndex) {
+                        Divider(color = Color.Gray, modifier = Modifier.alpha(0.4f))
+                    }
                 }
             }
+
         }
     }
 }
 
 @Composable
-fun RecurringBill(recurringBill: RecurringBill) {
+fun RecurringBill(
+    recurringBill: RecurringBillModel,
+) {
     Row(
         modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = recurringBill.companyName[0].toString(),
-            fontSize = 30.sp,
-            style = TextStyle.Default.copy(
-                fontWeight = FontWeight.Bold
+        Card(
+            shape = CircleShape,
+        ) {
+            Text(
+                modifier = Modifier.padding(horizontal = 11.dp, vertical = 2.dp),
+                text = recurringBill.companyName[0].toString(),
+                fontSize = 30.sp,
+                style = TextStyle.Default.copy(
+                    fontWeight = FontWeight.Bold
+                )
             )
-        )
+        }
         Spacer(Modifier.width(10.dp))
         Column(Modifier.weight(1f)) {
             Text(
@@ -144,6 +160,6 @@ fun PreviewContent() {
 @Preview
 @Composable
 fun PreviewRecurringBill() {
-    val bill = RecurringBill("Netflix", "$7.99", "Monthly", "$999.99")
+    val bill = RecurringBillModel("Netflix", "$7.99", "Monthly", "$999.99")
     RecurringBill(bill)
 }
