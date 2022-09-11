@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
         createNotificationChannel()
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.ic_baseline_attach_money_24)
             .setContentTitle("Confirm Recurring Bill")
             .setContentText("Are you still using Netflix?")
             .addAction(R.drawable.ic_launcher_foreground,  "No, cancel it", PendingIntent.getActivity(applicationContext, 0, Intent(), 0))
