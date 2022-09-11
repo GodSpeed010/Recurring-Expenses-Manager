@@ -49,8 +49,8 @@ class MainActivity : ComponentActivity() {
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("Confirm Recurring Bill")
             .setContentText("Are you still using Netflix?")
-            .addAction(R.drawable.ic_launcher_foreground,  "no", PendingIntent.getActivity(applicationContext, 0, Intent(), 0))
-            .addAction(R.drawable.ic_launcher_foreground,  "yes", PendingIntent.getActivity(applicationContext, 0, Intent(), 0))
+            .addAction(R.drawable.ic_launcher_foreground,  "No, cancel it", PendingIntent.getActivity(applicationContext, 0, Intent(), 0))
+            .addAction(R.drawable.ic_launcher_foreground,  "Yes", PendingIntent.getActivity(applicationContext, 0, Intent(), 0))
 //            .setStyle(NotificationCompat.BigTextStyle().bigText("Much longer text that cannot fit one line..."))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
